@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { DialogService } from './dialog/dialog.service';
-import { ExampleComponent } from './example/example.component';
+import { DialogService } from './features/dialog/dialog.service';
+import { ExampleComponent } from './features/example/example.component';
 
 @Component({
   selector: 'app-root',
