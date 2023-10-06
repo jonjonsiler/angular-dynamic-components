@@ -9,6 +9,5 @@ import { ExampleComponent } from './example/example.component';
   declarations: [AppComponent, ExampleComponent],
   imports: [BrowserModule, DialogModule],
   bootstrap: [AppComponent],
-  entryComponents: [ExampleComponent]
 })
 export class AppModule {}
