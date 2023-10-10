@@ -8,7 +8,10 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "ES2022",
+    "module": "es2020",
+    "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": false,
     "typeRoots": [
       "node_modules/@types"
     ],
