@@ -1,4 +1,13 @@
-import { Component, Type, ComponentFactoryResolver, ViewChild, OnDestroy, ComponentRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { 
+  Component,
+  Type,
+  ViewChild,
+  OnDestroy,
+  ComponentRef,
+  AfterViewInit,
+  ChangeDetectorRef,
+  inject
+} from '@angular/core';
 import { InsertionDirective } from './insertion.directive';
 import { Subject } from 'rxjs';
 import { DialogRef } from './dialog-ref';
@@ -17,9 +26,8 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
   private readonly _onClose = new Subject<any>();
   public onClose = this._onClose.asObservable();
 
-  childComponentType: Type<any>;
-
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private cd: ChangeDetectorRef, private dialogRef: DialogRef) {}
+  private cd: ChangeDetectorRef = inject(ChangeDetectorRef);
+  private dialogRef: DialogRef = inject(DialogRef);
 
   ngAfterViewInit() {
     this.loadChildComponent(this.childComponentType);
