@@ -35,12 +35,12 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
     this.cd.detectChanges();
   }
 
-  onOverlayClicked(evt: MouseEvent) {
-    this.dialogRef.close();
-  }
-
   onDialogClicked(evt: MouseEvent) {
     evt.stopPropagation();
+  }
+
+  handleClose(): void {
+    this.dialogRef.close();
   }
 
   loadChildComponent(componentType: Type<any>) {
