@@ -6,8 +6,14 @@ import { DialogModule } from './features/dialog/dialog.module';
 import { ExampleComponent } from './features/example/example.component';
 
 @NgModule({
-  declarations: [AppComponent, ExampleComponent],
-  imports: [BrowserModule, DialogModule],
+  declarations: [
+    AppComponent,
+    ExampleComponent
+  ],
+  imports: [
+    BrowserModule, 
+    DialogModule
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
