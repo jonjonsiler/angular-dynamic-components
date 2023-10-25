@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { DialogService } from './dialog/dialog.service';
-import { ExampleComponent } from './example/example.component';
+import { Component, inject } from '@angular/core';
+import { DialogService } from './features/dialog/dialog.service';
+import { ExampleComponent } from './features/example/example.component';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +8,11 @@ import { ExampleComponent } from './example/example.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(public dialog: DialogService) {
-    const ref = this.dialog.open(ExampleComponent, { data: { message: 'I am a dynamic component inside of a dialog!' } });
+  public dialogService: DialogService = inject(DialogService);
 
-    ref.afterClosed.subscribe(result => {
+  openDialog() {
+    const dialog = this.dialogService.open(ExampleComponent, { data: { message: 'I am a dynamic component inside of a dialog!' } });
+    dialog.afterClosed.subscribe(result => {
       console.log('Dialog closed', result);
     });
   }
