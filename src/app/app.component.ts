@@ -8,10 +8,11 @@ import { ExampleComponent } from './features/example/example.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public dialog: DialogService = inject(DialogService);
-  constructor() {
-    const ref = this.dialog.open(ExampleComponent, { data: { message: 'I am a dynamic component inside of a dialog!' } });
-    ref.afterClosed.subscribe(result => {
+  public dialogService: DialogService = inject(DialogService);
+
+  openDialog() {
+    const dialog = this.dialogService.open(ExampleComponent, { data: { message: 'I am a dynamic component inside of a dialog!' } });
+    dialog.afterClosed.subscribe(result => {
       console.log('Dialog closed', result);
     });
   }
