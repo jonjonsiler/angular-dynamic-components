@@ -18,12 +18,13 @@ import { DialogRef } from './dialog-ref';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements AfterViewInit, OnDestroy {
-  componentRef: ComponentRef<any>;
 
   @ViewChild(InsertionDirective)
   insertionPoint: InsertionDirective;
 
   private readonly _onClose = new Subject<any>();
+  public componentRef: ComponentRef<any>;
+  public childComponentType: Type<any>;
   public onClose = this._onClose.asObservable();
 
   private cd: ChangeDetectorRef = inject(ChangeDetectorRef);
@@ -43,12 +44,9 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
   }
 
   loadChildComponent(componentType: Type<any>) {
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentType);
-
     let viewContainerRef = this.insertionPoint.viewContainerRef;
     viewContainerRef.clear();
-
-    this.componentRef = viewContainerRef.createComponent(componentFactory);
+    this.componentRef = viewContainerRef.createComponent(componentType);
   }
 
   ngOnDestroy() {
